@@ -1,0 +1,12 @@
+.avatar{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.carusel{
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+}
