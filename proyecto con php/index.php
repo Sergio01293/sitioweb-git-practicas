@@ -1,3 +1,10 @@
 <?include("cabecera.php");?>
-    <h1>Hola mundo</h1>
+<div class="p-5 bg-light">
+        <div class="container">
+            <p class="text-center h3">Bienvenidos</p>
+            <p >Este es un portafolio privado</p>
+            <p>Mas informacion</p>
+
+        </div>
+    </div>
 <?php include("pie.php")?>
