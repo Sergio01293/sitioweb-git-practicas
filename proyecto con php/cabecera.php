@@ -7,3 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="container">
+
+    <ul class="h-menu">
+    <li><a href="index.php">Inicio</a></li>
+    <li><a href="portafolio.php">Portafolio</a></li>
+    <li><a href="cerrarSesion.php">Cerrar</a></li>
+    </ul>

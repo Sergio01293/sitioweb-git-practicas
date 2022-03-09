@@ -1,4 +1,3 @@
 <?include("cabecera.php");?>
-    
-</body>
-</html>
+    <h1>Hola mundo</h1>
+<?php include("pie.php")?>

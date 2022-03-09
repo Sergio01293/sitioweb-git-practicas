@@ -6,7 +6,15 @@
 }
 
 .carusel{
+    margin: 30px;
     width: 90%;
     margin: 0 auto;
     overflow: hidden;
+}
+
+.example{
+    position: relative;
+    padding: 0.125rem;
+    border: 2px solid #eee;
+    margin-bottom: 1rem;
 }
