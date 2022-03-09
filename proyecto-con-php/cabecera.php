@@ -20,7 +20,7 @@
 <body>
     <div class="container">
     <div class="p-4">
-        <ul class="h-menu">
+        <ul class="h-menu bg-light">
             <li><a href="index.php">Inicio</a></li>
             <li><a href="portafolio.php">Portafolio</a></li>
             <li><a href="cerrarSesion.php">Cerrra Sesion</a></li>

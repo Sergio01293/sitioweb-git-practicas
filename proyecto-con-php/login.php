@@ -61,7 +61,7 @@
                     <div class="card-footer">
                         
                     </div>
-            </div>
+                </div>
             </div>
             <div class="cell-4">
                 
