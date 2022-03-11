@@ -4,13 +4,19 @@ if ($_POST) {
     $nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : "";
     $imagen = (isset($_FILES['archivo']['name'])) ? $_FILES['archivo']['name'] : "";
     $accion = (isset($_POST['accion'])) ? $_POST['accion'] : "";
+    $id = (isset($_POST['Id'])) ? $_POST['Id'] : "";
 }
 include('../config/db.php');
 switch ($accion) {
     case "registrar":
         //INSERT INTO `libros` (`Id`, `Nombre`, `Imagen`) VALUES (NULL, 'Libro de Takeyas', 'libro.jpg');
-        $sql = "INSERT INTO `libros` (`Id`, `Nombre`, `Imagen`) VALUES (NULL, '$nombre', '$imagen');";
-        $sentenciaSQL = $conexion->prepare($sql);
+        // $sql = "INSERT INTO `libros` (`Id`, `Nombre`, `Imagen`) VALUES (NULL, '$nombre', '$imagen');";
+        // $sentenciaSQL = $conexion->prepare($sql);
+        // $sentenciaSQL->execute();
+        // echo "Presionado boton agregar";
+        $sentenciaSQL = $conexion->prepare("INSERT INTO libros (Nombre, Imagen) VALUES (:nombre, :imagen);");
+        $sentenciaSQL->bindParam(':nombre', $nombre);
+        $sentenciaSQL->bindParam(':imagen', $imagen);
         $sentenciaSQL->execute();
         echo "Presionado boton agregar";
         break;
@@ -21,9 +27,18 @@ switch ($accion) {
         echo "Presionado boton cancelar";
         break;
     case "Seleccionar":
+        $sql = "SELECT * FROM libros WHERE id=:id";
+
+        $sentenciaSQL = $conexion->prepare($sql);
+        $sentenciaSQL->bindParam(':id', $id);
+        $sentenciaSQL->execute();
+        $registro = $sentenciaSQL->fetch(PDO::FETCH_LAZY);
         echo "Presionado boton ";
         break;
     case "Eliminar":
+        $sentenciaSQL = $conexion->prepare("DELETE FROM libros WHERE id=:id");
+        $sentenciaSQL->bindParam(':id', $id);
+        $sentenciaSQL->execute();
         echo "Presionado boton eliminar";
         break;
 }
@@ -81,7 +96,7 @@ $listaLibros = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($listaLibros as $libro) { ?>
+            <?php foreach ($listaLibros as $libro) : ?>
                 <tr>
                     <td><?php echo $libro['Id'] ?></td>
                     <td><?php echo $libro['Nombre'] ?></td>
@@ -94,7 +109,7 @@ $listaLibros = $sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
                         </form>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
